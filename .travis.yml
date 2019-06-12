@@ -4,9 +4,8 @@ python:
   - "3.6"
 install:
   - pip install -r requirements.txt
-  - if [[ $TRAVIS_PTYHON_VERSION == '3.6' ]]; then pip install black; fi
   - pip install document-your-code
 # command to run tests
 script:
   - pytest
-  - if [[ $TRAVIS_PYTHON_VERSION == '3.6' ]]; then black --check --diff --skip-string-normalization .; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == '3.6' ]]; then pip install black; black --check --diff --skip-string-normalization .; fi
